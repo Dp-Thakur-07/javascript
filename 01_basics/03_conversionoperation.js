@@ -16,7 +16,7 @@ let valueInNumber = Number(score)
 let isLoggedIn = "dp"
 let booleanIsLoggedIn = Boolean(isLoggedIn)
 
-console.log(booleanIsLoggedIn);
+// console.log(booleanIsLoggedIn);
 
 //1=>true , 0=>flase
 //""=>false
@@ -25,5 +25,30 @@ console.log(booleanIsLoggedIn);
 let somenumber = 33
 let stringName = String(somenumber)
 
-console.log(stringName)
-console.log(typeof stringName)
+// console.log(stringName)
+// console.log(typeof stringName)
+
+//string conversion
+
+let str1 = "hello"
+let str2 = " Durgaprasad"
+
+let str3 = str1+str2
+console.log(str3);
+
+
+// console.log("1"+2);
+// console.log(1+"2");
+// console.log(1+1+"2");
+
+
+//postfix
+let x = 40
+let y = x++
+console.log(`x:${x},y:${y}`);
+
+//prefix
+
+let a = 40
+let b = ++a
+console.log(`a:${a},b:${b}`);
