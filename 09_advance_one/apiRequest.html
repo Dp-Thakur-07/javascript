@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body style="background-color: #212121">
+    0 UNSENT Client has been created. open() not called yet. 1 OPENED open() has
+    been called. 2 HEADERS_RECEIVED send() has been called, and headers and
+    status are available. 3 LOADING Downloading; responseText holds partial
+    data. 4 DONE The operation is complete.
+  </body>
+  <script>
+    const requestURL = "https://api.github.com/users/Dp-Thakur-07";
+
+function fetchGitHubData() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", requestURL);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      const data = JSON.parse(this.responseText);
+      let picture = data.avatar_url;
+      let follower = data.followers;
+
+      let div = document.createElement("div");
+      div.style.width = "300px";
+      div.style.height = "auto";
+      div.style.border = "2px solid black";
+      div.style.display = "flex";
+      div.style.flexDirection = "column";
+      div.style.alignItems = "center";
+      div.style.justifyContent = "center";
+      div.style.padding = "10px";
+
+      // Create image element
+      let img = document.createElement("img");
+      img.alt = "GitHub Avatar";
+      img.style.maxWidth = "100%";
+      img.style.borderRadius = "50%";
+
+      // Create a paragraph for followers
+      let followerText = document.createElement("p");
+      followerText.style.marginTop = "20px"; // Adjust spacing
+      followerText.style.fontSize = "18px";
+      followerText.style.fontFamily = "Arial, sans-serif";
+
+      div.appendChild(img);
+      div.appendChild(followerText);
+      document.body.appendChild(div);
+
+      document.querySelector("img").setAttribute("src", `${data.avatar_url}`);
+      document.querySelector("p").innerHTML = `${data.name} , Followers: ${data.followers}`;
+    }
+  };
+  xhr.send();
+}
+
+// Create Button
+let button = document.createElement("button");
+button.innerHTML = "Show GitHub Data";
+button.style.margin = "20px";
+button.style.padding = "10px";
+button.style.fontSize = "16px";
+button.style.cursor = "pointer";
+button.onclick = fetchGitHubData; // Call function on click
+
+document.body.appendChild(button);
+
+  </script>
+</html>
